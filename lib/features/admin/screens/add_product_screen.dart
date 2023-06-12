@@ -47,8 +47,9 @@ class _AddProductScreenState extends State<AddProductScreen> {
   ];
 
   void sellProduct() {
-    if (_addProductFormKey.currentState!.validate() || images.isNotEmpty) {
-      adminServices.sellProduct(context: context,
+    if (_addProductFormKey.currentState!.validate() && images.isNotEmpty) {
+      adminServices.sellProduct(
+          context: context,
           name: productNameController.text,
           description: descriptionController.text,
           price: double.parse(priceController.text) ,
@@ -96,10 +97,10 @@ class _AddProductScreenState extends State<AddProductScreen> {
                 const SizedBox(height: 20),
                 images.isNotEmpty
                     ? CarouselSlider(
-                  items: images.map((i) {
+                  items: images.map(
+                        (i) {
                     return Builder(
-                      builder: (BuildContext context) =>
-                          Image.file(
+                      builder: (BuildContext context) => Image.file(
                             i,
                             fit: BoxFit.cover,
                             height: 200,
@@ -177,7 +178,8 @@ class _AddProductScreenState extends State<AddProductScreen> {
                   ),
                 ),
                 const SizedBox(height: 10),
-                CustomButton(text: 'Sell',
+                CustomButton(
+                    text: 'Sell',
                     onTap: sellProduct,
                 ),
               ],

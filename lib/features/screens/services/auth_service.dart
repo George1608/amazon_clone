@@ -1,3 +1,5 @@
+
+
 // ignore_for_file: use_build_context_synchronously
 
 import 'dart:convert';
@@ -70,8 +72,8 @@ class AuthService {
         },
       );
       httpErrorHandle(
-        response: res,
         context: context,
+        response: res,
         onSuccess:() async {
           SharedPreferences prefs = await SharedPreferences.getInstance();
           Provider.of<UserProvider>(context,listen: false).setUser(res.body);
@@ -104,7 +106,7 @@ class AuthService {
         Uri.parse('$uri/tokenIsValid'),
         headers: <String, String>{
           'Content-Type': 'application/json; charset=UTF-8',
-          'x-auth-token': token!
+          'x-auth-token': token !
         },
       );
       var response =jsonDecode(tokenRes.body);
