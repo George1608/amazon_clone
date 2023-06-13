@@ -106,7 +106,7 @@ class AuthService {
         Uri.parse('$uri/tokenIsValid'),
         headers: <String, String>{
           'Content-Type': 'application/json; charset=UTF-8',
-          'x-auth-token': token !
+          'x-auth-token': token!
         },
       );
       var response =jsonDecode(tokenRes.body);

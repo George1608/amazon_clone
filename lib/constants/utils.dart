@@ -19,7 +19,7 @@ Future<List<File>>pickImages() async{
       allowMultiple: true,
     );
     if (files != null && files.files.isNotEmpty) {
-      for (int i = 0; i < files.files.length; i++) {
+      for (int i=0; i<files.files.length; i++) {
         images.add(File(files.files[i].path!));
       }
     }

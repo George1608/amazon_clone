@@ -27,7 +27,7 @@ class _AddProductScreenState extends State<AddProductScreen> {
 
   String category = 'Mobiles';
   List<File> images = [];
-  final _addProductFormKey = GlobalKey <FormState>();
+  final _addProductFormKey = GlobalKey<FormState>();
 
   @override
   void dispose() {
@@ -49,15 +49,14 @@ class _AddProductScreenState extends State<AddProductScreen> {
   void sellProduct() {
     if (_addProductFormKey.currentState!.validate() && images.isNotEmpty) {
       adminServices.sellProduct(
-          context: context,
-          name: productNameController.text,
-          description: descriptionController.text,
-          price: double.parse(priceController.text) ,
-          quantity: double.parse(quantityController.text),
-          category: category,
-          images: images,
+        context: context,
+        name: productNameController.text,
+        description: descriptionController.text,
+        price: double.parse(priceController.text),
+        quantity: double.parse(quantityController.text),
+        category: category,
+        images: images,
       );
-
     }
   }
 
@@ -97,55 +96,53 @@ class _AddProductScreenState extends State<AddProductScreen> {
                 const SizedBox(height: 20),
                 images.isNotEmpty
                     ? CarouselSlider(
-                  items: images.map(
-                        (i) {
-                    return Builder(
-                      builder: (BuildContext context) => Image.file(
-                            i,
-                            fit: BoxFit.cover,
-                            height: 200,
-                          ),
-                      );
-                  },
-                  ).toList(),
-                  options: CarouselOptions(
-                      viewportFraction: 1,
-                      height: 200
-                  ),
-                )
+                        items: images.map(
+                          (i) {
+                            return Builder(
+                              builder: (BuildContext context) => Image.file(
+                                i,
+                                fit: BoxFit.cover,
+                                height: 200,
+                              ),
+                            );
+                          },
+                        ).toList(),
+                        options:
+                            CarouselOptions(viewportFraction: 1, height: 200),
+                      )
                     : GestureDetector(
-                  onTap: selectImages,
-                  child: DottedBorder(
-                    borderType: BorderType.RRect,
-                    radius: const Radius.circular(10),
-                    dashPattern: const [10, 4],
-                    strokeCap: StrokeCap.round,
-                    child: Container(
-                      width: double.infinity,
-                      height: 150,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          const Icon(
-                            Icons.folder_open,
-                            size: 40,
-                          ),
-                          const SizedBox(height: 15),
-                          Text(
-                            'Select Product Image',
-                            style: TextStyle(
-                              fontSize: 15,
-                              color: Colors.grey.shade400,
+                        onTap: selectImages,
+                        child: DottedBorder(
+                          borderType: BorderType.RRect,
+                          radius: const Radius.circular(10),
+                          dashPattern: const [10, 4],
+                          strokeCap: StrokeCap.round,
+                          child: Container(
+                            width: double.infinity,
+                            height: 150,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                const Icon(
+                                  Icons.folder_open,
+                                  size: 40,
+                                ),
+                                const SizedBox(height: 15),
+                                Text(
+                                  'Select Product Image',
+                                  style: TextStyle(
+                                    fontSize: 15,
+                                    color: Colors.grey.shade400,
+                                  ),
+                                ),
+                              ],
                             ),
                           ),
-                        ],
+                        ),
                       ),
-                    ),
-                  ),
-                ),
                 const SizedBox(height: 30),
                 CustomTextField(
                     controller: productNameController,
@@ -157,10 +154,14 @@ class _AddProductScreenState extends State<AddProductScreen> {
                   maxLines: 7,
                 ),
                 const SizedBox(height: 10),
-                CustomTextField(controller: priceController, hintText: 'Price'),
+                CustomTextField(
+                    controller: priceController,
+                    hintText: 'Price'
+                ),
                 const SizedBox(height: 10),
                 CustomTextField(
-                    controller: quantityController, hintText: 'Quantity'),
+                    controller: quantityController,
+                    hintText: 'Quantity'),
                 const SizedBox(height: 10),
                 SizedBox(
                   width: double.infinity,
@@ -168,7 +169,10 @@ class _AddProductScreenState extends State<AddProductScreen> {
                     value: category,
                     icon: const Icon(Icons.keyboard_arrow_down),
                     items: productCategories.map((String item) {
-                      return DropdownMenuItem(value: item, child: Text(item));
+                      return DropdownMenuItem(
+                          value: item,
+                          child: Text(item)
+                      );
                     }).toList(),
                     onChanged: (String? newVal) {
                       setState(() {
@@ -179,8 +183,8 @@ class _AddProductScreenState extends State<AddProductScreen> {
                 ),
                 const SizedBox(height: 10),
                 CustomButton(
-                    text: 'Sell',
-                    onTap: sellProduct,
+                  text: 'Sell',
+                  onTap: sellProduct,
                 ),
               ],
             ),

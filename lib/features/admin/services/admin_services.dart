@@ -2,6 +2,7 @@
 
 import 'dart:io';
 import 'package:amazon_clone/constants/error_handiling.dart';
+import 'package:amazon_clone/constants/global_variable.dart';
 import 'package:amazon_clone/constants/utils.dart';
 import 'package:amazon_clone/models/product.dart';
 import 'package:amazon_clone/provider/user_provider.dart';
@@ -9,7 +10,7 @@ import 'package:cloudinary_public/cloudinary_public.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart' as http;
 import 'package:provider/provider.dart';
-import '../../../constants/global_variable.dart';
+
 
 class AdminServices {
   void sellProduct({
@@ -23,7 +24,7 @@ class AdminServices {
   }) async {
     final userProvider = Provider.of<UserProvider>(context, listen: false);
     try {
-      final cloudinary = CloudinaryPublic('dpo2rmmfn', 'k2o5wp4h');
+      final cloudinary = CloudinaryPublic('djodhktii', 'a1kl74lf');
       List<String> imageUrls = [];
 
       for (int i = 0; i < images.length; i++) {
